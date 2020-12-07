@@ -80,13 +80,18 @@
                 <li class="nav-item">
                     <a class="nav-link <% if (page_name === 'propertygrid') { %> active <% } %>" href="/property-grid">Tìm phòng</a>
                 </li>
-                <li class="nav-item">
-                    <% if (locals.user) { %>
-                        <a class="nav-link">Chào, <%= user.name %></a>
-                    <% } else { %>
+                <% if (locals.user) { %>
+                    <li class="nav-item">
+                            <a class="nav-link">Chào, <%= user.name %></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout"> Đăng xuất! </a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
                         <a class="nav-link" href="/auth/facebook">Đăng nhập</a>
-                    <% } %>
-                </li>
+                    </li>
+                <% } %>
             </ul>
         </div>
         <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
