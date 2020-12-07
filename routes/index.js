@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 
 var HomeCtrl = require('../controllers/home.controller');
+var ManageCtrl = require('../controllers/manage.controller');
 
 /* GET home page. */
 router
@@ -11,6 +12,12 @@ router
     .get('/property-grid', HomeCtrl.gid)
     .get('/login', HomeCtrl.login)
     .get('/signup', HomeCtrl.signup)
+
+    .get(
+        '/profileuser/:id',
+        isLoggedIn,
+        ManageCtrl.viewProfileUser
+    )
 
 
 router.get('/logout', function (req, res) {
