@@ -6,9 +6,8 @@ class ManageController {
         try {
             var permisions = [
                 'Thành viên',
-                'Biên Tập Viên',
-                'Tổng Biên Tập Viên',
-                'Giám Đốc Điều Hành'
+                'Duyệt bài',
+                'Admin'
             ];
             var profileID = req.params.id;
             var userView = await UserModel.findOne({_id: new ObjectId(profileID)});
