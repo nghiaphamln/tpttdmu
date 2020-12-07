@@ -6,6 +6,8 @@ var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
 var mongoose = require('mongoose');
 var configDB = require('./config/database')
+var bodyParser = require('body-parser');
+
 
 // connect database
 mongoose.connect(configDB.url);
@@ -31,7 +33,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
-
+app.use(bodyParser());
 
 app.use(session({
   secret: 'TimPhongTroTDMU',

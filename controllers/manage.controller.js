@@ -46,6 +46,29 @@ class ManageController {
             res.status(200).send('Error manager!');
         }
     }
+
+    static async updateProfile(req, res, next) {
+        try {
+            var phoneNumber = req.body.phoneNumber;
+            var email = req.body.email;
+            var profileID = req.params.id;
+
+            // let filter = {_id: new ObjectId(profileID)};
+            // let update = {email: email, phoneNumber: phoneNumber};
+            
+            var userView = await UserModel.findOne({_id: new ObjectId(profileID)});
+
+            userView.email = email;
+            userView.phoneNumber = phoneNumber;
+
+            await userView.save();
+            
+            res.redirect('/profileuser/' + profileID);
+        }
+        catch (e) {
+            res.status(200).send(e);
+        }
+    }
 }
 
 module.exports = ManageController;

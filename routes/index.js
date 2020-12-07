@@ -31,6 +31,12 @@ router
         ManageCtrl.viewPost
     )
 
+    .post(
+        '/updateprofile/:id',
+        isLoggedIn,
+        ManageCtrl.updateProfile
+    )
+
 
 router.get('/logout', function (req, res) {
     req.logout();

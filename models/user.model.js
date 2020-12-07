@@ -8,7 +8,10 @@ var UserModelSchema = new Schema({
         token: String
     },
     permission: { type: Number, default: 0 },
-    countPost: { type: Number, default: 0 }
+    countPost: { type: Number, default: 0 },
+    email: {type: String, default: ''},
+    phoneNumber: {type: String, default: ''},
+    avatar: {type: String, default: '/images/no-avatar.jpeg'}
 });
 
 module.exports = mongoose.model('users', UserModelSchema);
