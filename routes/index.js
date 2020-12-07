@@ -19,6 +19,18 @@ router
         ManageCtrl.viewProfileUser
     )
 
+    .get(
+        '/newpost',
+        isLoggedIn,
+        ManageCtrl.newPost
+    )
+
+    .get(
+        '/viewpost',
+        isLoggedIn,
+        ManageCtrl.viewPost
+    )
+
 
 router.get('/logout', function (req, res) {
     req.logout();
