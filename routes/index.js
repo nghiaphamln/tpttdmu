@@ -25,6 +25,12 @@ router
         ManageCtrl.newPost
     )
 
+    .post(
+        '/addpost',
+        isLoggedIn,
+        ManageCtrl.newPostUpLoad
+    )
+
     .get(
         '/viewpost',
         isLoggedIn,

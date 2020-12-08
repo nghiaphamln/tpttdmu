@@ -1,6 +1,29 @@
 var UserModel = require('../models/user.model');
+var PostModel = require('../models/posts.model')
 var ObjectId = require('mongoose').Types.ObjectId;
 var multer = require('multer');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/uploads');
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now()  + "-" + file.originalname)
+    }
+}); 
+
+var upload = multer({ 
+    storage: storage,
+    fileFilter: function (req, file, cb) {
+        console.log(file);
+        if(file.mimetype=="image/bmp" || file.mimetype=="image/png" || file.mimetype=="image/jpeg" || file.mimetype=="image/jpg" || file.mimetype=="image/gif"){
+            cb(null, true)
+        }else{
+            return cb(new Error('Only image are allowed!'))
+        }
+    }
+}).single("Image");
+
 
 class ManageController {
     static async viewProfileUser(req, res, next) {
@@ -50,27 +73,6 @@ class ManageController {
 
     static async newPostUpLoad(req, res, next) {
         try {
-            var storage = multer.diskStorage({
-                destination: function (req, file, cb) {
-                  cb(null, 'public/uploads');
-                },
-                filename: function (req, file, cb) {
-                  cb(null, Date.now()  + "-" + file.originalname)
-                }
-            });  
-            var upload = multer({ 
-                storage: storage,
-                fileFilter: function (req, file, cb) {
-                    console.log(file);
-                    if(file.mimetype=="image/bmp" || file.mimetype=="image/png" || file.mimetype=="image/jpeg" || file.mimetype=="image/jpg" || file.mimetype=="image/gif"){
-                        cb(null, true)
-                    }else{
-                        return cb(new Error('Only image are allowed!'))
-                    }
-                }
-            }).single("Image");
-
-
             upload(req, res, function(err) {
                 if (err instanceof multer.MulterError) {
                     res.json({"kq":0, "errMsg":"A Multer error occurred when uploading."});
@@ -82,27 +84,25 @@ class ManageController {
                     var streetname = req.body.streetname;
                     var wards = req.body.wards;
                     var cost = req.body.cost; 
-                    var profileID = req.params.id;
                     try {
                         var uploadImage = '/uploads/' + req.file.filename;
                     } 
                     catch {
-                        var uploadImage = null;
+                        var uploadImage = '/images/about1.jpg';
                     }
 
-                    UserModel.findOne({_id: new ObjectId(profileID)}, (err, doc) => {
-                        doc.title = title;
-                        doc.description = description;
-                        doc.streetname = streetname;
-                        doc.wards = wards;
-                        doc.cost = cost;
-                        if (uploadImage) {
-                            doc.uploadImage = uploadImage;
-                        }
-                        doc.save();
-                    });
+                    var newPost = new PostModel();
+                    newPost.user = req.user._id;
+                    newPost.title = title;
+                    newPost.description = description;
+                    newPost.streetname = streetname;
+                    newPost.wards = wards;
+                    newPost.cost = cost;
+                    newPost.uploadImage = uploadImage;
 
-                    res.redirect('/profileuser/' + profileID);
+                    newPost.save();
+
+                    res.redirect('/');
                 }
             });     
         }
@@ -114,26 +114,6 @@ class ManageController {
 
     static async updateProfile(req, res, next) {
         try {
-            var storage = multer.diskStorage({
-                destination: function (req, file, cb) {
-                  cb(null, 'public/uploads');
-                },
-                filename: function (req, file, cb) {
-                  cb(null, Date.now()  + "-" + file.originalname)
-                }
-            });  
-            var upload = multer({ 
-                storage: storage,
-                fileFilter: function (req, file, cb) {
-                    console.log(file);
-                    if(file.mimetype=="image/bmp" || file.mimetype=="image/png" || file.mimetype=="image/jpeg" || file.mimetype=="image/jpg" || file.mimetype=="image/gif"){
-                        cb(null, true)
-                    }else{
-                        return cb(new Error('Only image are allowed!'))
-                    }
-                }
-            }).single("Image");
-
             upload(req, res, function(err) {
                 if (err instanceof multer.MulterError) {
                     res.json({"kq":0, "errMsg":"A Multer error occurred when uploading."});

@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var postModelSchema = new Schema({
+    user: String,
     title: String,
     description: String,
     streetname: String,
@@ -13,4 +14,4 @@ var postModelSchema = new Schema({
 
 
 
-module.exports = mongoose.model('post', postModelSchema);
+module.exports = mongoose.model('posts', postModelSchema);
