@@ -1,5 +1,6 @@
 var UserModel = require('../models/user.model');
 var ObjectId = require('mongoose').Types.ObjectId;
+var multer = require('multer');
 
 class ManageController {
     static async viewProfileUser(req, res, next) {
@@ -49,24 +50,58 @@ class ManageController {
 
     static async updateProfile(req, res, next) {
         try {
-            var phoneNumber = req.body.phoneNumber;
-            var email = req.body.email;
-            var profileID = req.params.id;
+            var storage = multer.diskStorage({
+                destination: function (req, file, cb) {
+                  cb(null, 'public/uploads');
+                },
+                filename: function (req, file, cb) {
+                  cb(null, Date.now()  + "-" + file.originalname)
+                }
+            });  
+            var upload = multer({ 
+                storage: storage,
+                fileFilter: function (req, file, cb) {
+                    console.log(file);
+                    if(file.mimetype=="image/bmp" || file.mimetype=="image/png" || file.mimetype=="image/jpeg" || file.mimetype=="image/jpg" || file.mimetype=="image/gif"){
+                        cb(null, true)
+                    }else{
+                        return cb(new Error('Only image are allowed!'))
+                    }
+                }
+            }).single("Image");
 
-            // let filter = {_id: new ObjectId(profileID)};
-            // let update = {email: email, phoneNumber: phoneNumber};
-            
-            var userView = await UserModel.findOne({_id: new ObjectId(profileID)});
+            upload(req, res, function(err) {
+                if (err instanceof multer.MulterError) {
+                    res.json({"kq":0, "errMsg":"A Multer error occurred when uploading."});
+                } else if (err) {
+                    res.json({"kq":0, "errMsg":"An unknown error occurred when uploading." + err});
+                } else {
+                    var phoneNumber = req.body.phoneNumber;
+                    var email = req.body.email;
+                    var profileID = req.params.id;
+                    try {
+                        var avatar = '/uploads/' + req.file.filename;
+                    } 
+                    catch {
+                        var avatar = null;
+                    }
 
-            userView.email = email;
-            userView.phoneNumber = phoneNumber;
+                    UserModel.findOne({_id: new ObjectId(profileID)}, (err, doc) => {
+                        doc.email = email;
+                        doc.phoneNumber = phoneNumber;
+                        if (avatar) {
+                            doc.avatar = avatar;
+                        }
+                        doc.save();
+                    });
 
-            await userView.save();
-            
-            res.redirect('/profileuser/' + profileID);
+                    res.redirect('/profileuser/' + profileID);
+                }
+            });     
         }
         catch (e) {
-            res.status(200).send(e);
+            console.log(e);
+            res.status(500).send(e);
         }
     }
 }

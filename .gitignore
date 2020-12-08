@@ -1,0 +1,9 @@
+# ignore all image in uploads folder
+/public/uploads/*.jpg
+/public/uploads/*.bmp
+/public/uploads/*.png
+/public/uploads/*.jpeg
+/public/uploads/*.gif
+
+# ignore node_modules
+/node_modules

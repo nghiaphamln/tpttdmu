@@ -34,7 +34,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
-// app.use(bodyParser());
+app.use(bodyParser());
 
 app.use(session({
   secret: 'TimPhongTroTDMU',
