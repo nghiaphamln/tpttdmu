@@ -5,5 +5,3 @@
 /public/uploads/*.jpeg
 /public/uploads/*.gif
 
-# ignore node_modules
-/node_modules
