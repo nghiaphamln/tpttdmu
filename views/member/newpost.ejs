@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-	<meta charset="utf-8">
+<html xmlns:a="http://www.w3.org/1999/html">
+<meta charset="utf-8">
 <title>Profile</title>
 <link rel="stylesheet" href="/css/profile.css">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
@@ -16,24 +16,24 @@
                 <div class="list-group list-group-flush account-settings-links">
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="/profileuser/<%= user._id %>">Thông tin cá nhân</a>
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="/viewpost">Xem bài đăng</a>
-                    <a class="list-group-item list-group-item-action" data-toggle="list" href="/newpost">Đăng bài viết mới</a>
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="/newpost">Đăng bài viết mới</a>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="tab-content">
                     <div class="tab-pane fade active show" id="account-general">
 
-                        
+
                         <hr class="border-light m-0">
 
                         <div class="card-body">
                             <div class="form-group">
                                 <label class="form-label">Tiêu đề bài đăng</label>
-                                <input type="text" class="form-control mb-1">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Mô tả</label>
-                                <input type="text" class="form-control">
+                                <textarea class="form-control" rows="5"></textarea>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Địa chỉ</label>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Giá tiền</label>
-                                <input type="text" class="form-control" value="Company Ltd.">
+                                <input type="text" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -57,7 +57,7 @@
 
     <div class="text-right mt-3">
         <button type="button" class="btn btn-primary">Đăng bài</button>&nbsp;
-        <button type="button" class="btn btn-default">Thoát</button>
+        <a href="/"><button type="button" class="btn btn-default">Thoát</button></a>
     </div>
 
 </div>

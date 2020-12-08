@@ -14,7 +14,7 @@
         <div class="row no-gutters row-bordered row-border-light">
             <div class="col-md-3 pt-0">
                 <div class="list-group list-group-flush account-settings-links">
-                    <a class="list-group-item list-group-item-action" data-toggle="list" href="/profileuser/<%= user._id %>">Thông tin cá nhân</a>
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="/profileuser/<%= user._id %>">Thông tin cá nhân</a>
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="/viewpost">Xem bài đăng</a>
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="/newpost">Đăng bài viết mới</a>
                 </div>
@@ -35,14 +35,14 @@
                         <hr class="border-light m-0">
 
                         <div class="card-body">
-                            <% if (user.phoneNumber == '') { %>
+                            <% if (user.phoneNumber == '' || user.email == '') { %>
                                 <label class="form-label" style="color: red; font-size: 150%;"><strong>Bạn cần cập nhật thông tin cá nhân</strong></label>
                                 <br>
                                 <br>
                             <% } %>
                             <div class="form-group">
                                 <label class="form-label">Tên</label>
-                                <input type="text" class="form-control" value="<%= userView.name%>">
+                                <input type="text" class="form-control" value="<%= userView.name%>" disabled="disabled">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">E-mail</label>

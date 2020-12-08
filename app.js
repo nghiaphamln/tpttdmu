@@ -7,6 +7,7 @@ var expressLayouts = require('express-ejs-layouts');
 var mongoose = require('mongoose');
 var configDB = require('./config/database')
 var bodyParser = require('body-parser');
+var multer = require('multer');
 
 
 // connect database
@@ -33,13 +34,14 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
-app.use(bodyParser());
+// app.use(bodyParser());
 
 app.use(session({
   secret: 'TimPhongTroTDMU',
   resave: false,
   saveUninitialized: true,
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
