@@ -49,8 +49,10 @@ class ManageController {
 
     static async viewPost(req, res, next) {
         try {
+            var listPost = await PostModel.find({user: req.user._id});
             res.render('member/viewpost', {
                 user: req.user,
+                listPost: listPost,
                 page_name: 'deactive'
             });
         }

@@ -9,7 +9,8 @@ var postModelSchema = new Schema({
     wards: String,
     cost: String,
     uploadImage: String,
-    time: {type: Date, default: Date.now}
+    time: {type: Date, default: Date.now},
+    status: {type: Number, default: 0}
 });
 
 
