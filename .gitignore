@@ -4,3 +4,6 @@
 /public/uploads/*.png
 /public/uploads/*.jpeg
 /public/uploads/*.gif
+
+# ignore node_module
+/node_modules
