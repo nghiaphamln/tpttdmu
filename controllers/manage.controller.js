@@ -49,10 +49,16 @@ class ManageController {
 
     static async viewPost(req, res, next) {
         try {
+            var status = [
+                '<span class="badge badge-info">Đang đợi duyệt</span>',
+                '<span class="badge badge-success">Đã duyệt</span>',
+                '<span class="badge badge-danger">Từ chối</span>'
+            ];
             var listPost = await PostModel.find({user: req.user._id});
             res.render('member/viewpost', {
                 user: req.user,
                 listPost: listPost,
+                status: status,
                 page_name: 'deactive'
             });
         }

@@ -34,16 +34,20 @@
                                 <div class="col-md-12">
                                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                         <div class="col p-4 d-flex flex-column position-static">
-                                            <strong class="d-inline-block mb-2 text-primary"> <%= post.cost %> VNĐ </strong>
                                             <h3 class="mb-0"><%= post.title %></h3>
+                                            <p>Giá: <strong class="d-inline-block mb-2 text-primary"> <%= post.cost %> VNĐ </strong></p>
                                             <div class="mb-1 text-muted"><%= post.time %></div>
                                             <p class="card-text mb-auto">Trích dẫn ở đây nè.....</p>
                                             <p class="card-text mb-auto"><%= post.streetname + ', ' + post.wards %></p>
-                                        <p class="card-text mb-auto" <% if (post.status == 1) { %> style="color: greenyellow;"> Đã duyệt <% } else { %> style="color: red;"> Chưa duyệt <% } %>  </p>
                                             <a href="#" class="stretched-link">Đọc tiếp...</a>
+                                            <%- status[post.status] %> 
                                         </div>
-                                        <div class="col-auto d-none d-lg-block col-md-4">
-                                            <img src="<%= post.uploadImage %>" alt="" width="100%" height="100%">
+                                        <div class="col-auto d-none d-lg-block col-md-4" >
+                                            <table width="100%" height="100%" align="center" valign="center">
+                                                <td>
+                                                    <img src="<%= post.uploadImage %>" width="150%">
+                                                </td>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
