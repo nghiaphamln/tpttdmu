@@ -7,11 +7,30 @@ var ManageCtrl = require('../controllers/manage.controller');
 
 /* GET home page. */
 router
-    .get('/', HomeCtrl.index)
-    .get('/about',HomeCtrl.about)
-    .get('/property-grid', HomeCtrl.gid)
-    .get('/login', HomeCtrl.login)
-    .get('/signup', HomeCtrl.signup)
+    .get(
+        '/', 
+        HomeCtrl.index
+    )
+
+    .get(
+        '/about',
+        HomeCtrl.about
+    )
+
+    .get(
+        '/property-grid', 
+        HomeCtrl.gid
+    )
+
+    .get(
+        '/login', 
+        HomeCtrl.login
+    )
+
+    .get(
+        '/signup', 
+        HomeCtrl.signup
+    )
 
     .get(
         '/profileuser/:id',
@@ -70,7 +89,7 @@ router
         })
     )
 
-    
+
 module.exports = router;
 
 function isLoggedIn(req, res, next) {
