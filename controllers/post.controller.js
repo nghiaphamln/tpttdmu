@@ -14,7 +14,7 @@ class PostController {
     static async declinePost(req, res, next) {
         var postID = req.params.id;
         await PostModel.findOne({_id: postID}, (err, doc) => {
-            doc.status = 2;
+            doc.status = 2;  
             doc.save();
         });
         res.redirect('/admin/list-post');

@@ -9,7 +9,7 @@ router
         '/list-post',
         isAdmin,
         AdminCtrl.listPost,
-    )
+    )  
 
     .get(
         '/accep-post/:id',
@@ -23,7 +23,7 @@ router
         PostCtrl.declinePost
     )
 
-    
+
 module.exports = router;
 
 function isAdmin(req, res, next) {
