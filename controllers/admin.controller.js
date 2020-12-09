@@ -6,10 +6,11 @@ class AdminController {
     static async listPost(req, res, next) {
         var listPost = await PostModel.find({status: 0}).sort({time: -1});
         res.render(
-            'about',
+            'admin/listpost',
             {
                 user: req.user,
-                listPost: listPost
+                listPost: listPost,
+                page_name: 'deactive'
             }
         )
     }

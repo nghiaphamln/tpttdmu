@@ -18,6 +18,9 @@
                     <a class="list-group-item list-group-item-action active" data-toggle="list" href="/profileuser/<%= user._id %>">Thông tin cá nhân</a>
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="/viewpost">Xem bài đăng</a>
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="/newpost">Đăng bài viết mới</a>
+                    <% if (user.permission >= 1) { %>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="/admin/list-post">Duyệt bài</a>
+                    <% } %> 
                 </div>
             </div>
             <div class="col-md-9">
