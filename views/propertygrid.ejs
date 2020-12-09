@@ -32,7 +32,7 @@
             <div class="col-sm-12">
                 <div class="grid-option">
                     <form>
-                        <select class="custom-select">
+                        <select class="custom-select" >
                             <option selected>Tất cả</option>
                             <option value="1">Mới nhất</option>
                             <option value="1">Cũ nhất</option>
@@ -42,6 +42,7 @@
                     </form>
                 </div>
             </div>
+            <% listPost.forEach((post) => { %> 
             <div class="col-md-4">
                 <div class="card-box-a card-shadow">
                     <div class="img-box-a">
@@ -51,13 +52,13 @@
                         <div class="card-overlay-a-content">
                             <div class="card-header-a">
                                 <h2 class="card-title-a">
-                                    <a href="#">06 Trần Văn Ơn
-                                        <br /> Phú Hoà, TDM</a>
+                                    <a href="#"><%= post.streetname %>
+                                        <br /> <%= post.wards %>  , TDM</a>
                                 </h2>
                             </div>
                             <div class="card-body-a">
                                 <div class="price-box d-flex">
-                                    <span class="price-a">Giá | 1.500.000 VNĐ</span>
+                                    <span class="price-a">Giá | <%= post.cost %> VNĐ</span>
                                 </div>
                                 <a href="property-single.html" class="link-a">Xem chi tiết
                                     <span class="ion-ios-arrow-forward"></span>
@@ -89,384 +90,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="images/room1.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">06 Trần Văn Ơn
-                                        <br /> Phú Hoà, TDM</a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">Giá | 1.500.000 VNĐ</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">Xem chi tiết
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Diện tích</h4>
-                                        <span>25m
-                        <sup>2</sup>
-                      </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Điện</h4>
-                                        <span>9k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Nước</h4>
-                                        <span>3k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Để xe</h4>
-                                        <span>có</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="images/room1.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">06 Trần Văn Ơn
-                                        <br /> Phú Hoà, TDM</a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">Giá | 1.500.000 VNĐ</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">Xem chi tiết
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Diện tích</h4>
-                                        <span>25m
-                        <sup>2</sup>
-                      </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Điện</h4>
-                                        <span>9k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Nước</h4>
-                                        <span>3k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Để xe</h4>
-                                        <span>có</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="images/room1.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">06 Trần Văn Ơn
-                                        <br /> Phú Hoà, TDM</a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">Giá | 1.500.000 VNĐ</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">Xem chi tiết
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Diện tích</h4>
-                                        <span>25m
-                        <sup>2</sup>
-                      </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Điện</h4>
-                                        <span>9k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Nước</h4>
-                                        <span>3k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Để xe</h4>
-                                        <span>có</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="images/room1.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">06 Trần Văn Ơn
-                                        <br /> Phú Hoà, TDM</a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">Giá | 1.500.000 VNĐ</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">Xem chi tiết
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Diện tích</h4>
-                                        <span>25m
-                        <sup>2</sup>
-                      </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Điện</h4>
-                                        <span>9k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Nước</h4>
-                                        <span>3k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Để xe</h4>
-                                        <span>có</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="images/room1.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">06 Trần Văn Ơn
-                                        <br /> Phú Hoà, TDM</a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">Giá | 1.500.000 VNĐ</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">Xem chi tiết
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Diện tích</h4>
-                                        <span>25m
-                        <sup>2</sup>
-                      </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Điện</h4>
-                                        <span>9k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Nước</h4>
-                                        <span>3k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Để xe</h4>
-                                        <span>có</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="images/room1.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">06 Trần Văn Ơn
-                                        <br /> Phú Hoà, TDM</a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">Giá | 1.500.000 VNĐ</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">Xem chi tiết
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Diện tích</h4>
-                                        <span>25m
-                        <sup>2</sup>
-                      </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Điện</h4>
-                                        <span>9k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Nước</h4>
-                                        <span>3k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Để xe</h4>
-                                        <span>có</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="images/room1.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">06 Trần Văn Ơn
-                                        <br /> Phú Hoà, TDM</a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">Giá | 1.500.000 VNĐ</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">Xem chi tiết
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Diện tích</h4>
-                                        <span>25m
-                        <sup>2</sup>
-                      </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Điện</h4>
-                                        <span>9k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Nước</h4>
-                                        <span>3k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Để xe</h4>
-                                        <span>có</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="images/room1.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">06 Trần Văn Ơn
-                                        <br /> Phú Hoà, TDM</a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">Giá | 1.500.000 VNĐ</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">Xem chi tiết
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Diện tích</h4>
-                                        <span>25m
-                        <sup>2</sup>
-                      </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Điện</h4>
-                                        <span>9k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Nước</h4>
-                                        <span>3k</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Để xe</h4>
-                                        <span>có</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
+            <% }) %> 
+        <!-- <div class="row">
             <div class="col-sm-12">
                 <nav class="pagination-a">
                     <ul class="pagination justify-content-end">
@@ -492,7 +117,7 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 <!--/ Property Grid End /-->

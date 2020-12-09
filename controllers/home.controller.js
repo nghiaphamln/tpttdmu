@@ -1,3 +1,6 @@
+var PostModel = require('../models/posts.model');
+
+
 class HomeController {
     static index (req, res) {
         try {
@@ -7,19 +10,31 @@ class HomeController {
         }
     }
 
-    static about (req, res) {
+    static async about (req, res) {
         try {
-            res.render('about', {title: 'TDMU', user: req.user, page_name: 'about'});
-        } catch (exception) {
-            res.status(500).send(exception);
+            res.render('about', {
+                title: 'TDMU', 
+                user: req.user, 
+                page_name: 'about'
+            });
+        } 
+        catch (exception) {
+            res.status(404).send(exception);
         }
     }
 
-    static gid (req, res) {
+    static async gid (req, res) {
         try {
-            res.render('propertygrid', {title: 'TDMU', user: req.user, page_name: 'propertygrid'});
-        } catch (exception) {
-            res.status(500).send(exception);
+            var listPost = await PostModel.find({status: 1});
+            res.render('propertygrid', {
+                title: 'TDMU', 
+                user: req.user, 
+                listPost: listPost,
+                page_name: 'propertygrid'
+            });
+        } 
+        catch (exception) {
+            res.status(404).send(exception);
         }
     }
 
