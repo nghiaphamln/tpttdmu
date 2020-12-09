@@ -1,18 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('passport');
-var multer = require('multer');
 
 var AdminCtrl = require('../controllers/admin.controller');
 
 router
     .get(
         '/listPost',
-        AdminCtrl.listPost,
-        isAdmin
+        (req, res, next) => {
+            res.send('respond with a resource');
+        }
     )
 
-module.exports = router();
+module.exports = router;
 
 function isAdmin(req, res, next) {
     if (req.isAuthenticated() && req.user.permission >= 1) {

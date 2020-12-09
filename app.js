@@ -7,7 +7,6 @@ var expressLayouts = require('express-ejs-layouts');
 var mongoose = require('mongoose');
 var configDB = require('./config/database')
 var bodyParser = require('body-parser');
-var multer = require('multer');
 
 
 // connect database
@@ -18,7 +17,9 @@ var passport = require('passport');
 var session = require('express-session');
 
 var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
+const admin = require('./routes/admin');
 
 var app = express();
 
@@ -48,6 +49,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/', indexRouter);
+app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
