@@ -1,17 +1,23 @@
-var ImageModel = require('../models/image.model');
+var PostModel = require('../models/posts.model');
 var fs = require('fs');
 
 class PostController {
-    static async uploadImage(req, res, next) {
-        try {
-            let newImage = new ImageModel();
-            newImage.image.data = fs.readFileSync(req.files.userPhoto.path);
-            newImage.image.contentType = 'image/png';
-            await newImage.save();
-        }
-        catch (e) {
-            res.status(200).send('Error manager!');
-        }
+    static async acceptPost(req, res, next) {
+        var postID = req.params.id;
+        await PostModel.findOne({_id: postID}, (err, doc) => {
+            doc.status = 1;
+            doc.save();
+        });
+        res.redirect('/admin/list-post');
+    }
+
+    static async declinePost(req, res, next) {
+        var postID = req.params.id;
+        await PostModel.findOne({_id: postID}, (err, doc) => {
+            doc.status = 2;
+            doc.save();
+        });
+        res.redirect('/admin/list-post');
     }
 }
 

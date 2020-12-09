@@ -33,7 +33,10 @@
 
                         <div class="card-body">
                             <div class="row mb-2">
-                                <% listPost.forEach(function(post) { %> 
+                                <% if (listPost.length == 0) { %> 
+                                    <br>
+                                    <a style="text-align: center; font-size: large;"> &emsp;<strong>Không có bài viết!</strong> </a>
+                                <% } else listPost.forEach(function(post) { %> 
                                 <div class="col-md-12">
                                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                         <div class="col p-4 d-flex flex-column position-static">
@@ -42,8 +45,15 @@
                                             <div class="mb-1 text-muted"><%= post.time %></div>
                                             <p class="card-text mb-auto">Trích dẫn ở đây nè.....</p>
                                             <p class="card-text mb-auto"><%= post.streetname + ', ' + post.wards %></p>
-                                            <a href="#" class="stretched-link">Đọc tiếp...</a>
+                                            <a href="#">Đọc tiếp...</a>
                                             <br>
+                                            <div>
+                                                <a href="/admin/accep-post/<%= post._id %> "><button class="btn btn-primary"> Duyệt </button></a>
+                                                <a href="/admin/decline-post/<%= post._id %> "><button class="btn" style="background-color: rgb(240, 94, 94);"> Từ chối </button></a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            
                                         </div>
                                         <div class="col-auto d-none d-lg-block col-md-4" >
                                             <table width="100%" height="100%" align="center" valign="center">
