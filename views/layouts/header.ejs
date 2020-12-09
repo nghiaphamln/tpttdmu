@@ -82,7 +82,7 @@
                           <a class="dropdown-item" href="/profileuser/<%= user._id %>">Thông tin cá nhân</a>
                           <a class="dropdown-item" href="/newpost">Đăng bài</a>
                           <% if (user.permission >= 1) { %>
-                          <a class="dropdown-item" href="#">Duyệt bài</a>
+                          <a class="dropdown-item" href="/admin/list-post">Duyệt bài</a>
                           <% } %>
                           <a class="dropdown-item" href="/logout">Đăng xuất</a>
                         </div>

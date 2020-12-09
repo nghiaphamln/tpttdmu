@@ -5,10 +5,9 @@ var AdminCtrl = require('../controllers/admin.controller');
 
 router
     .get(
-        '/listPost',
-        (req, res, next) => {
-            res.send('respond with a resource');
-        }
+        '/list-post',
+        isAdmin,
+        AdminCtrl.listPost,
     )
 
 module.exports = router;
