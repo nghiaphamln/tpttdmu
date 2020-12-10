@@ -14,6 +14,41 @@ class AdminController {
             }
         )
     }
+
+    static async member(req, res, next) {
+        var status = [
+            '<span class="badge badge-info">Bình thường</span>',
+            '<span class="badge badge-danger"> Bị cấm </span>'
+        ];
+        var listUser = await UserModel.find();
+        res.render(
+            'admin/member',
+            {
+                user: req.user,
+                listUser: listUser,
+                page_name: 'deactive',
+                status: status
+            }
+        )
+    }
+
+    static async banMember(req, res, next) {
+        var userID = req.params.id;
+        await UserModel.findOne({_id: userID}, (err, doc) => {
+            doc.status = 1;
+            doc.save();
+            res.redirect('/admin/member');
+        });
+    }
+
+    static async unbanMember(req, res, next) {
+        var userID = req.params.id;
+        await UserModel.findOne({_id: userID}, (err, doc) => {
+            doc.status = 0;
+            doc.save();
+            res.redirect('/admin/member');
+        });
+    }
 }
 
 module.exports = AdminController;

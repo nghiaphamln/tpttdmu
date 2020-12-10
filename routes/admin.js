@@ -23,6 +23,24 @@ router
         PostCtrl.declinePost
     )
 
+    .get(
+        '/member',
+        isAdmin,
+        AdminCtrl.member
+    )
+
+    .get(
+        '/ban-member/:id',
+        isAdmin,
+        AdminCtrl.banMember
+    )
+
+    .get(
+        '/unban-member/:id',
+        isAdmin,
+        AdminCtrl.unbanMember
+    )
+
 
 module.exports = router;
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<title>Duyệt bài viết</title>
+<title>Danh sách bài viết</title>
 <link rel="icon" href="/images/logo.png">
-<link rel="stylesheet" href="./css/profile.css">
+<link rel="stylesheet" href="/css/profile.css">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 <div class="container light-style flex-grow-1 container-p-y">
     <a href="/" style="text-decoration: none;">
@@ -13,7 +13,7 @@
 
     <center>
         <h4 class="font-weight-bold py-3 mb-4">
-            DUYỆT BÀI ĐĂNG
+            DANH SÁCH BÀI ĐĂNG
         </h4>
     </center>
 
@@ -28,8 +28,8 @@
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="/newpost">Đăng bài
                         viết mới</a>
                     <% if (user.permission >= 1) { %>
-                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="/admin/list-post">Duyệt bài</a>
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="/admin/member">Quản lí thành viên</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="/admin/list-post">Duyệt bài</a>
+                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="/admin/member">Quản lí thành viên</a>
                     <% } %> 
                 </div>
             </div>
@@ -41,32 +41,28 @@
 
                         <div class="card-body">
                             <div class="row mb-2">
-                                <% if (listPost.length == 0) { %> 
-                                    <br>
-                                    <a style="text-align: center; font-size: large;"> &emsp;<strong>Không có bài viết!</strong> </a>
-                                <% } else listPost.forEach(function(post) { %>
+                                <% listUser.forEach(function(member) { %> 
                                 <div class="col-md-12">
                                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                         <div class="col p-4 d-flex flex-column position-static">
-                                            <h3 class="mb-0"><%= post.title %></h3>
-                                            <p>Giá: <strong class="d-inline-block mb-2 text-primary"> <%= post.cost %> VNĐ </strong></p>
-                                            <div class="mb-1 text-muted"><%= post.time %></div>
-                                            <p class="card-text mb-auto">Trích dẫn ở đây nè.....</p>
-                                            <p class="card-text mb-auto"><%= post.streetname + ', ' + post.wards %></p>
-                                            <a href="/property-single/<%= post._id %>">Đọc tiếp...</a>
+                                            <h3 class="mb-0"> <%= member.name %>  </h3>
                                             <br>
-                                            <div>
-                                                <a href="/admin/accep-post/<%= post._id %> "><button class="btn btn-primary"> Duyệt </button></a>
-                                                <a href="/admin/decline-post/<%= post._id %> "><button class="btn" style="background-color: rgb(240, 94, 94);"> Từ chối </button></a>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            
+                                            <p>ID: <strong class="d-inline-block mb-2 text-primary"> <%= member._id %>  </strong></p>
+                                            <p>Email: <strong class="d-inline-block mb-2 text-primary"> <%= member.email %>  </strong></p>
+                                            <p>Số điện thoại: <strong class="d-inline-block mb-2 text-primary"> <%= member.phoneNumber %>  </strong></p>
+                                            <br>
+                                            <%- status[member.status] %> 
+                                            <br>
+                                            <% if (member.status == 0) { %>
+                                                <a href="/admin/ban-member/<%= member._id %>  "><button class="btn" onclick="return confirm('Bạn có muốn chặn thành viên này không?');" style="display: block; width: 100%; background-color: rgb(255, 66, 66);"> Chặn thành viên </button></a>
+                                            <% } else { %>
+                                                <a href="/admin/unban-member/<%= member._id %>  "><button class="btn" onclick="return confirm('Bạn có muốn bỏ chặn thành viên này không?');" style="display: block; width: 100%; background-color: rgb(37, 204, 255);"> Gỡ chặn thành viên </button></a>
+                                            <% } %>  
                                         </div>
                                         <div class="col-auto d-none d-lg-block col-md-4" >
                                             <table width="100%" height="100%" align="center" valign="center">
                                                 <td>
-                                                    <img src="<%= post.uploadImage %>" width="150%">
+                                                    <img src="<%= member.avatar %>" width="150%">
                                                 </td>
                                             </table>
                                         </div>
