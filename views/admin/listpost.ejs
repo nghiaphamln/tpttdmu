@@ -52,7 +52,7 @@
                                             <div class="mb-1 text-muted"><%= post.time %></div>
                                             <p class="card-text mb-auto">Trích dẫn ở đây nè.....</p>
                                             <p class="card-text mb-auto"><%= post.streetname + ', ' + post.wards %></p>
-                                            <a href="#">Đọc tiếp...</a>
+                                            <a href="/property-single/<%= post._id %>">Đọc tiếp...</a>
                                             <br>
                                             <div>
                                                 <a href="/admin/accep-post/<%= post._id %> "><button class="btn btn-primary"> Duyệt </button></a>

@@ -4,6 +4,7 @@ var passport = require('passport');
 
 var HomeCtrl = require('../controllers/home.controller');
 var ManageCtrl = require('../controllers/manage.controller');
+var PostCtrl = require('../controllers/post.controller');
 
 /* GET home page. */
 router
@@ -56,6 +57,17 @@ router
         ManageCtrl.viewPost
     )
 
+    .get(
+        '/delete-post/:id',
+        isLoggedIn,
+        PostCtrl.deletePost
+    )
+
+    .get(
+        '/property-single/:id',
+        PostCtrl.singlePost
+    )
+
     .post(
         '/updateprofile/:id',
         isLoggedIn,
@@ -88,6 +100,7 @@ router
             failureRedirect: '/'
         })
     )
+
 
 
 module.exports = router;
