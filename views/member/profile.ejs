@@ -7,7 +7,7 @@
 <link href="http://netdna.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 <div class="container light-style flex-grow-1 container-p-y">
     
-<form action="/updateprofile/<%= userView._id%>" method="post" enctype="multipart/form-data">
+<form action="/updateprofile/<%= userView._id%>" method="post" enctype="multipart/form-data" name="myForm" onsubmit="return validate()">
     <a href="/" style="text-decoration: none;">
         <img src="/images/logo.png" style="width: 8%">
         <img src="/images/title.png" style="width: 30%">
@@ -62,14 +62,13 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">E-mail</label>
-                                <input type="text" class="form-control mb-1" value="<%= userView.email%>" name="email">
+                                <input type="text" class="form-control mb-1" value="<%= userView.email%>" name="email" id="email">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Số điện thoại</label>
-                                <input type="text" class="form-control" value="<%= userView.phoneNumber%>" name="phoneNumber">
+                                <input type="text" class="form-control" value="<%= userView.phoneNumber%>" name="phoneNumber" id="phoneNumber">
                             </div>
                         </div>
-
                     </div>
                 </div>     
             </div>
@@ -82,4 +81,31 @@
     </div>
 </form>
 </div>
+
+<script>
+    function validate() {
+        var phoneNumber = document.myForm.phoneNumber.value;
+        var email = document.myForm.email.value;
+        var status = false;
+
+        if (email.length < 1) {
+            document.getElementById('email').innerHTML = "<img src='https://viettuts.vn/example-php/javascript/unchecked.gif'> Email không đưỢc bỏ trống!";
+            status = false;
+        } else {
+            status = true;
+        }
+
+        if (phoneNumber.length < 1) {
+            document.getElementById('phoneNumber').innerHTML = "<img src='https://viettuts.vn/example-php/javascript/unchecked.gif'> Số điện thoại không đưỢc bỏ trống!";
+            status = false;
+        } else if (phoneNumber.length != 10) {
+            document.getElementById('phoneNumber').innerHTML = "<img src='https://viettuts.vn/example-php/javascript/unchecked.gif'> Số điện thoại không hợp lệ!";
+            status = false;
+        } else {
+            status = true;
+        }
+        return status;
+    }
+</script>
+
 </html>
