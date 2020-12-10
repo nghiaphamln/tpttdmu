@@ -91,7 +91,13 @@ class ManageController {
                     var description = req.body.description;
                     var streetname = req.body.streetname;
                     var wards = req.body.wards;
+                    var district = req.body.district;
                     var cost = req.body.cost; 
+                    var water = req.body.water;
+                    var electric = req.body.electric;
+                    var area = req.body.area;
+                    var ultilities = req.body.ultilities;
+                    var roomtype = req.body.roomtype;
                     try {
                         var uploadImage = '/uploads/' + req.file.filename;
                     } 
@@ -104,8 +110,14 @@ class ManageController {
                     newPost.title = title;
                     newPost.description = description;
                     newPost.streetname = streetname;
+                    newPost.district = district;
                     newPost.wards = wards;
+                    newPost.water = water;
+                    newPost.electric = electric;
                     newPost.cost = cost;
+                    newPost.area = area;
+                    newPost.ultilities = ultilities;
+                    newPost.roomtype = roomtype;
                     newPost.uploadImage = uploadImage;
 
                     newPost.save();

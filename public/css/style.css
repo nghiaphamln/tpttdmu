@@ -2086,3 +2086,17 @@ footer .credits {
 .breadcrumb-item :hover{
   color: #2e72ca;
 }
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+

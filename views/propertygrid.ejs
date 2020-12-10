@@ -46,7 +46,7 @@
             <div class="col-md-4">
                 <div class="card-box-a card-shadow">
                     <div class="img-box-a">
-                        <img src="images/room1.jpg" alt="" class="img-a img-fluid">
+                        <img src="<%= post.uploadImage %>" alt="" class="img-a img-fluid">
                     </div>
                     <div class="card-overlay">
                         <div class="card-overlay-a-content">
@@ -68,22 +68,19 @@
                                 <ul class="card-info d-flex justify-content-around">
                                     <li>
                                         <h4 class="card-info-title">Diện tích</h4>
-                                        <span>25m
+                                        <span><%= post.area %>m
                         <sup>2</sup>
                       </span>
                                     </li>
                                     <li>
                                         <h4 class="card-info-title">Điện</h4>
-                                        <span>9k</span>
+                                        <span><%= post.electric %></span>
                                     </li>
                                     <li>
                                         <h4 class="card-info-title">Nước</h4>
-                                        <span>3k</span>
+                                        <span><%= post.water %></span>
                                     </li>
-                                    <li>
-                                        <h4 class="card-info-title">Để xe</h4>
-                                        <span>có</span>
-                                    </li>
+                                    
                                 </ul>
                             </div>
                         </div>

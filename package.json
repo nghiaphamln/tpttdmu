@@ -11,6 +11,7 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "module": "^1.2.5",
     "mongoose": "^5.11.4",
     "morgan": "~1.9.1",
     "passport": "^0.4.1",
@@ -21,5 +22,17 @@
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
     "multer": "^1.4.2"
-  }
+  },
+  "description": "1. Đăng nhập sử dụng Facebook.\r 2. Tìm phòng trọ phù hợp theo nhu cầu.\r 3. Đăng phòng trọ dành cho chủ trọ có nhu cầu.\r 4. Có hỗ trợ trả phí để phòng trọ được ưu tiên hiển thị đầu tiên.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nghiaphamln/tpttdmu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nghiaphamln/tpttdmu/issues"
+  },
+  "homepage": "https://github.com/nghiaphamln/tpttdmu#readme"
 }
