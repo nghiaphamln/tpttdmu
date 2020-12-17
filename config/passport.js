@@ -1,4 +1,5 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user.model');
 var configAuth = require('../config/auth');
@@ -13,6 +14,39 @@ module.exports = (passport) => {
             done(err, user);
         });
     });
+
+    passport.use(new GoogleStrategy({
+            clientID: configAuth.googleAuth.clientID,
+            clientSecret: configAuth.googleAuth.clientSecret,
+            callbackURL: configAuth.googleAuth.callbackURL,
+        },
+        function (token, refreshToken, profile, done) {
+            process.nextTick(function () {
+                // // tìm trong db xem có user nào đã sử dụng google id này chưa
+                User.findOne({'google.id': profile.id}, function (err, user) {
+                    if (err)
+                        return done(err);
+                    if (user) {
+                        // if a user is found, log them in
+                        return done(null, user);
+                    } else {
+                        // if the user isnt in our database, create a new user
+                        var newUser = new User();
+                        // set all of the relevant information
+                        newUser.google.id = profile.id;
+                        newUser.google.token = token;
+                        newUser.name = profile.displayName;
+                        newUser.email = profile.emails[0].value; // pull the first email
+                        // save the user
+                        newUser.save(function (err) {
+                            if (err)
+                                throw err;
+                            return done(null, newUser);
+                        });
+                    }
+                });
+            });
+    }));
 
     passport.use(new FacebookStrategy({
 
