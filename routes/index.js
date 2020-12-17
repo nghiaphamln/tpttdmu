@@ -101,6 +101,17 @@ router
         })
     )
 
+    .post(
+        '/signup',
+        passport.authenticate('local-signup', {
+            successRedirect: '/login',
+            failureRedirect: '/signup',
+            failureFlash: true
+        })
+    )
+
+    
+
 
 
 module.exports = router;

@@ -1,4 +1,5 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user.model');
 var configAuth = require('../config/auth');
 
@@ -62,4 +63,40 @@ module.exports = (passport) => {
             });
 
         }));
+
+
+
+
+    // SIGNUP LOCAL    
+    passport.use('local-signup', new LocalStrategy({
+            fullnameField: 'name',
+            emailField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true
+        },
+        
+
+        function (req, email, password, done) {
+            process.nextTick(function () {
+                User.findOne({'local.email': email}, function (err, user) {
+                    if (err)
+                        return done(err);
+                    if (user) {
+                        return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                    } else {
+
+                        var newUser = new User();
+                        newUser.local.fullname = req.body.name;
+                        newUser.local.email = req.body.email;
+                        newUser.local.password = newUser.generateHash(password);
+                        newUser.save(function (err) {
+                            if (err)
+                                throw err;
+                            return done(null, newUser);
+                        });
+                    }
+                });
+            });
+        }));
+
 }

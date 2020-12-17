@@ -7,6 +7,8 @@ var expressLayouts = require('express-ejs-layouts');
 var mongoose = require('mongoose');
 var configDB = require('./config/database')
 var bodyParser = require('body-parser');
+var flash = require('connect-flash');
+
 
 
 // connect database
@@ -45,6 +47,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+
 
 require('./config/passport')(passport);
 
@@ -67,7 +71,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 
 module.exports = app;

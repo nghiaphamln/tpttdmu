@@ -57,7 +57,7 @@
 
 <!--/ Nav Star -->
 <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-    <a class="navbar-brand text-brand" href="/homepage" style="padding-left: 100px;"><img src="/images/logo.png" style="width: 15%"><img src="/images/title.png" style="width: 70%"></a>
+    <a class="navbar-brand text-brand" href="/" style="padding-left: 100px;"><img src="/images/logo.png" style="width: 15%"><img src="/images/title.png" style="width: 70%"></a>
     <div class="container">
         
         <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
@@ -76,7 +76,8 @@
                     <a class="nav-link <% if (page_name === 'propertygrid') { %> active <% } %>" href="/property-grid">Tìm phòng</a>
                 </li>
                 <% if (locals.user) { %>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" >
+                        
                         <a class="nav-link" style="color: #2e72ca;"><%= user.name %></a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="/profileuser/<%= user._id %>">Thông tin cá nhân</a>
@@ -90,7 +91,7 @@
                     </li>
                 <% } else { %>
                     <li class="nav-item">
-                        <a class="nav-link" href="/auth/facebook">Đăng nhập</a>
+                        <a class="nav-link <% if (page_name === 'login') { %> active <% } %>" href="/login">Đăng nhập</a>
                     </li>
                 <% } %>
             </ul>
