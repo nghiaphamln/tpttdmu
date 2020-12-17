@@ -104,14 +104,20 @@ router
     .post(
         '/signup',
         passport.authenticate('local-signup', {
-            successRedirect: '/login',
+            successRedirect: '/',
             failureRedirect: '/signup',
             failureFlash: true
         })
     )
 
-    
 
+    .post(
+        '/login',
+        passport.authenticate('local-login', {
+        successRedirect : '/',
+        failureRedirect : '/login',
+        failureFlash : true
+    }));
 
 
 module.exports = router;

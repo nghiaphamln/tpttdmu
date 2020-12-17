@@ -1,26 +1,45 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
 var Schema = mongoose.Schema;
 
 var UserModelSchema = new Schema({
     
-    name: String,
     facebook: {
         id: Number,
-        token: String
+        token: String,
     },
 
     local: {
-        username: String,
         password: String,
+        name: {type: String, default: ''},
+        email: {type: String, default: ''},
     },
-    
+
+    name: {type: String, default: ''},
+    email: {type: String, default: ''},
     permission: { type: Number, default: 0 },
     countPost: { type: Number, default: 0 },
-    email: {type: String, default: ''},
     phoneNumber: {type: String, default: ''},
     avatar: {type: String, default: '/images/no-avatar.jpeg'},
     status: {type: Number, default: 0}
+
+    
 });
+/*
+var UserModelSchema = new Schema ({
+
+    local: {
+        password: String,
+        name: {type: String, default: ''},
+        email: {type: String, default: ''},
+        permission: { type: Number, default: 0 },
+        countPost: { type: Number, default: 0 },
+        phoneNumber: {type: String, default: ''},
+        avatar: {type: String, default: '/images/no-avatar.jpeg'},
+        status: {type: Number, default: 0}
+    }
+});
+*/
 
 
 UserModelSchema.methods.generateHash = function (password) {

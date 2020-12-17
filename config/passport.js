@@ -16,12 +16,12 @@ module.exports = (passport) => {
 
     passport.use(new FacebookStrategy({
 
-            // pull in our app id and secret from our auth.js file
-            clientID: configAuth.facebookAuth.clientID,
-            clientSecret: configAuth.facebookAuth.clientSecret,
-            callbackURL: configAuth.facebookAuth.callbackURL
+        // pull in our app id and secret from our auth.js file
+        clientID: configAuth.facebookAuth.clientID,
+        clientSecret: configAuth.facebookAuth.clientSecret,
+        callbackURL: configAuth.facebookAuth.callbackURL
 
-        },
+    },
 
         // facebook will send back the token and profile
         (token, refreshToken, profile, done) => {
@@ -69,16 +69,16 @@ module.exports = (passport) => {
 
     // SIGNUP LOCAL    
     passport.use('local-signup', new LocalStrategy({
-            fullnameField: 'name',
-            emailField: 'email',
-            passwordField: 'password',
-            passReqToCallback: true
-        },
-        
+        fullnameField: 'name',
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true 
+    },
+
 
         function (req, email, password, done) {
             process.nextTick(function () {
-                User.findOne({'local.email': email}, function (err, user) {
+                User.findOne({ 'local.email': email }, function (err, user) {
                     if (err)
                         return done(err);
                     if (user) {
@@ -86,8 +86,8 @@ module.exports = (passport) => {
                     } else {
 
                         var newUser = new User();
-                        newUser.local.fullname = req.body.name;
-                        newUser.local.email = req.body.email;
+                        newUser.local.name = req.body.fullname;
+                        newUser.local.email = email;
                         newUser.local.password = newUser.generateHash(password);
                         newUser.save(function (err) {
                             if (err)
@@ -98,5 +98,24 @@ module.exports = (passport) => {
                 });
             });
         }));
+
+    // LOGIN LOCAL
+    passport.use('local-login', new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    },
+        function (req, email, password, done) {
+            User.findOne({ 'local.email': email }, function (err, user) {
+                if (err)
+                    return done(err);
+                if (!user)
+                    return done(null, false, req.flash('loginMessage', 'No user found.'));
+                if (!user.validPassword(password))
+                    return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+                return done(null, user);
+            });
+        })
+    );
 
 }
