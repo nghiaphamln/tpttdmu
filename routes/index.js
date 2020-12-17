@@ -101,6 +101,14 @@ router
         })
     )
 
+    .get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}))
+    // the callback after google has authenticated the user
+    .get('/auth/google/callback',
+        passport.authenticate('google', {
+            successRedirect: '/',
+            failureRedirect: '/'
+        }))
+
     .post(
         '/signup',
         passport.authenticate('local-signup', {
@@ -111,6 +119,7 @@ router
     )
 
 
+
     .post(
         '/login',
         passport.authenticate('local-login', {
@@ -118,6 +127,7 @@ router
         failureRedirect : '/login',
         failureFlash : true
     }));
+
 
 
 module.exports = router;

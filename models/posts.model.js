@@ -16,7 +16,9 @@ var postModelSchema = new Schema({
     ultilities: String,
     uploadImage: String,
     time: {type: Date, default: Date.now},
-    status: {type: Number, default: 0}
+    status: {type: Number, default: 0},
+    idvideo: String,
+    link360: String
 });
 
 

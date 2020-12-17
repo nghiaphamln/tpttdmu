@@ -9,6 +9,11 @@ var UserModelSchema = new Schema({
         token: String,
     },
 
+    google:{
+        id: Number,
+        token: String
+    },
+
     local: {
         password: String,
         name: {type: String, default: ''},

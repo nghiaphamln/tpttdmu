@@ -122,7 +122,7 @@ class ManageController {
 
                     newPost.save();
 
-                    res.redirect('/');
+                    res.redirect('/viewpost');
                 }
             });     
         }
@@ -140,6 +140,7 @@ class ManageController {
                 } else if (err) {
                     res.json({"kq":0, "errMsg":"An unknown error occurred when uploading." + err});
                 } else {
+                    var name = req.body.name
                     var phoneNumber = req.body.phoneNumber;
                     var email = req.body.email;
                     var profileID = req.params.id;
@@ -151,6 +152,7 @@ class ManageController {
                     }
 
                     UserModel.findOne({_id: new ObjectId(profileID)}, (err, doc) => {
+                        doc.name = name;
                         doc.email = email;
                         doc.phoneNumber = phoneNumber;
                         if (avatar) {
