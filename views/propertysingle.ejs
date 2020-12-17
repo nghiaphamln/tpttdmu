@@ -108,9 +108,6 @@
                 <p class="description color-text-a" style="color: grey;">
                   <%- post.description %>
                 </p>
-                <p class="description color-text-a no-margin" style="color: grey;">
-                  [NỘI DUNG GIỚI THIỆU]
-                </p>
               </div>
               <div class="row section-t3">
                 <div class="col-sm-12">
@@ -144,13 +141,13 @@
           </ul>
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
-                <iframe width="100%" height="460" src="https://www.youtube.com/embed/WRGqsmFMY7k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="100%" height="460" src="https://www.youtube.com/embed/<%= post.idvideo %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
-              <img src="/img/plan2.jpg" alt="" class="img-fluid">
+              <iframe src="<%- post.link360 %>" width="100%" height="460">
             </div>
             <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.771497078426!2d106.67327941411806!3d10.980612658395762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d12750408037%3A0x8f7cd55be896dec7!2zMDYgVHLhuqduIFbEg24gxqBuLCBQaMO6IEhvw6AsIFRo4bunIEThuqd1IE3hu5l0LCBCw6xuaCBExrDGoW5nLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1602462757263!5m2!1svi!2s" width="100%" height="460" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDSBDFbT0ow7raL4_6CKCdDx5M5zzcKSSA&q=Eiffel+Tower,Paris+France" width="100%" height="460" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
           </div>
         </div>

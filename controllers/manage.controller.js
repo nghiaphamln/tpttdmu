@@ -122,7 +122,7 @@ class ManageController {
 
                     newPost.save();
 
-                    res.redirect('/');
+                    res.redirect('/viewpost');
                 }
             });     
         }
