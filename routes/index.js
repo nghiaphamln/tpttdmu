@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var request = require('request');
 
 var HomeCtrl = require('../controllers/home.controller');
 var ManageCtrl = require('../controllers/manage.controller');
@@ -8,6 +9,10 @@ var PostCtrl = require('../controllers/post.controller');
 
 /* GET home page. */
 router
+    .get(
+        '/profile',
+        ManageCtrl.payPal
+    )
     .get(
         '/', 
         HomeCtrl.index

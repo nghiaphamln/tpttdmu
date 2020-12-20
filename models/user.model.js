@@ -26,9 +26,11 @@ var UserModelSchema = new Schema({
     countPost: { type: Number, default: 0 },
     phoneNumber: {type: String, default: ''},
     avatar: {type: String, default: '/images/no-avatar.jpeg'},
-    status: {type: Number, default: 0}
-
-    
+    status: {type: Number, default: 0},
+    idvideo: {type: String, default: ''},
+    link360: {type: String, default: ''},
+    linkmap: {type: String, default: ''},
+    money: {type: String, default: 0}
 });
 /*
 var UserModelSchema = new Schema ({
