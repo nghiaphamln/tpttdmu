@@ -1,4 +1,6 @@
 var PostModel = require('../models/posts.model');
+var UserModel = require('../models/user.model');
+const userModel = require('../models/user.model');
 
 
 class HomeController {
@@ -31,6 +33,21 @@ class HomeController {
                 user: req.user, 
                 listPost: listPost,
                 page_name: 'propertygrid'
+            });
+        } 
+        catch (exception) {
+            res.status(404).send(exception);
+        }
+    }
+
+    static async agent (req, res) {
+        try {
+            var listAgent = await UserModel.find({status: 1});
+            res.render('agentgrid', {
+                title: 'TDMU', 
+                user: req.user, 
+                listAgent: listAgent,
+                page_name: 'agentgrid'
             });
         } 
         catch (exception) {

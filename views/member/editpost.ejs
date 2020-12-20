@@ -8,7 +8,7 @@
 <script src="/ckeditor/ckeditor.js"></script>
 <div class="container light-style flex-grow-1 container-p-y">
 
-    <form action="/updatepost/<%= post._id %>" method="post" enctype="multipart/form-data">
+    <form action="/editpost/<%= listPostID._id %>" method="post" enctype="multipart/form-data">
         <a href="/" style="text-decoration: none;">
             <img src="/images/logo.png" style="width: 8%">
             <img src="/images/title.png" style="width: 30%">
@@ -44,17 +44,17 @@
                             <div class="card-body">
                                     <div class="form-group">
                                         <label class="form-label">Tiêu đề bài đăng</label>
-                                        <input type="text" class="form-control" name="title" value="<%- post.title %>">
+                                        <input type="text" class="form-control" name="title" value="<%- listPostID.title %>">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Mô tả</label>
-                                        <textarea class="form-control" rows="5" name="description" value="<%- post.description %>"></textarea>
+                                        <textarea class="form-control" rows="5" name="description" value="<%- listPostID.description %>"></textarea>
                                         <script>CKEDITOR.replace('description');</script>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="inputState">Huyện/Thị xã</label>
-                                        <select id="inputState" class="form-control" name="district" value="<%- post.district %>">
+                                        <select id="inputState" class="form-control" name="district" value="<%- listPostID.district %>">
                                             <option>Thủ Dầu Một</option>
                                             <option>Tân Uyên</option>
                                             <option>Thuận An</option>
@@ -65,7 +65,7 @@
 
                                     <div class="form-group">
                                         <label for="inputState">Phường/xã</label>
-                                        <select id="inputState" class="form-control" name="wards" value="<%- post.wards %>">
+                                        <select id="inputState" class="form-control" name="wards" value="<%- listPostID.wards %>">
                                             <option>Chánh Mỹ</option>
                                             <option>Chánh Nghĩa</option>
                                             <option>Định Hoà</option>
@@ -86,32 +86,32 @@
                                     <div class="form-group">
                                         <label class="form-label">Địa chỉ</label>
                                         <input type="text" class="form-control" placeholder="Số nhà, tên đường"
-                                            name="streetname" value="" value="<%- post.streetname %>">
+                                            name="streetname" value="" value="<%- listPostID.streetname %>">
                                     </div>
 
                                     <div class="row" style="padding-left: 15px">
                                         <div class="column">
                                             <div class="form-group">
                                                 <label class="form-label">Giá tiền</label>
-                                                <input type="number" value="<%- post.cost %>" style="text-align: right; width: 170px;" class="form-control" name="cost" placeholder="0">
+                                                <input type="number" value="<%- listPostID.cost %>" style="text-align: right; width: 170px;" class="form-control" name="cost" placeholder="0">
                                             </div>
                                         </div>
                                         <div class="column" style="padding-left: 25px">
                                             <div class="form-group">
                                                 <label class="form-label">Giá điện</label>
-                                                <input type="number" value="<%- post.electric %>" style="text-align: right; width: 170px;" class="form-control" name="electric" placeholder="0">
+                                                <input type="number" value="<%- listPostID.electric %>" style="text-align: right; width: 170px;" class="form-control" name="electric" placeholder="0">
                                             </div>
                                         </div>
                                         <div class="column">
                                             <div class="form-group" style="padding-left: 25px">
                                                 <label class="form-label">Giá nước</label>
-                                                <input type="number" value="<%- post.water %>" style="text-align: right; width: 170px;" class="form-control" name="water" placeholder="0">
+                                                <input type="number" value="<%- listPostID.water %>" style="text-align: right; width: 170px;" class="form-control" name="water" placeholder="0">
                                             </div>
                                         </div>
                                         <div class="column">
                                             <div class="form-group" style="padding-left: 25px">
                                                 <label class="form-label">Diện tích</label>
-                                                <input type="number" value="<%- post.area %>" style="text-align: right; width: 170px;" class="form-control" name="area" placeholder="0">
+                                                <input type="number" value="<%- listPostID.area %>" style="text-align: right; width: 170px;" class="form-control" name="area" placeholder="0">
                                             </div>
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@
 
                                     <div class="form-group">
                                         <label for="inputState">Loại phòng</label>
-                                        <select id="inputState" class="form-control" name="roomtype" value="<%- post.roomtype %>">
+                                        <select id="inputState" class="form-control" name="roomtype" value="<%- listPostID.roomtype %>">
                                             <option>Ở ghép</option>
                                             <option>1 người</option>
                                             <option>Kiot</option>
@@ -130,10 +130,10 @@
 
                                     <div class="form-group">
                                         <label class="form-label">Tiện ích</label>
-                                        <input type="text" class="form-control" name="ultilities" value="<%- post.ultilities %>">
+                                        <input type="text" class="form-control" name="ultilities" value="<%- listPostID.ultilities %>">
                                     </div>
                                     
-                                    <img src="uploads/<%= post.uploadImage %>">
+                                    <img src="uploads/<%= listPostID.uploadImage %>">
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Hình ảnh</label>
                                         <input type="file" class="form-control-file" name="Image" multiple="multiple">

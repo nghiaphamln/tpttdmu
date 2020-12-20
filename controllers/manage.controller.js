@@ -168,6 +168,34 @@ class ManageController {
         }
     }
 
+    static async viewPostID(req, res, next) {
+      try {
+          var listPostID = await PostModel.find({_id: req.params.id});
+          res.render('member/editpost', {
+              user: req.user,
+              _id: req.id,
+              listPostID: listPostID,
+              title: req.title,
+              description: req.description,
+              streetname: req.streetname,
+              district: req.district,
+              wards: req.wards,
+              water: req.water,
+              electric: req.electric,
+              cost: req.cost,
+              area: req.area,
+              ultilities: req.ultilities,
+              roomtype: req.roomtype,
+              uploadImage: req.uploadImage,
+              link360: req.link360,
+              idvideo: req.idvideo
+          });
+      }
+      catch (e) {
+          res.status(200).send('Error manager!');
+      }
+  }
+
     static async newPost(req, res, next) {
         try {
             res.render('member/newpost', {
@@ -271,6 +299,61 @@ class ManageController {
             res.status(500).send(e);
         }
     }
+
+    static async updatePost(req, res, next) {
+      try {
+        upload(req, res, function(err) {
+          if (err instanceof multer.MulterError) {
+              res.json({"kq":0, "errMsg":"A Multer error occurred when uploading."});
+          } else if (err) {
+              res.json({"kq":0, "errMsg":"An unknown error occurred when uploading." + err});
+          } else {
+            var postID = req.params.id;
+            var title = req.body.title;
+            var description = req.body.description;
+            var streetname = req.body.streetname;
+            var wards = req.body.wards;
+            var district = req.body.district;
+            var cost = req.body.cost;
+            var water = req.body.water;
+            var electric = req.body.electric;
+            var area = req.body.area;
+            var ultilities = req.body.ultilities;
+            var roomtype = req.body.roomtype;
+            try {
+                var uploadImage = '/uploads/' + req.file.filename;
+            } 
+            catch {
+                var uploadImage = null;
+            }
+
+            PostModel.findOne({_id: postID}, (err, doc) => {
+                doc.title = title;
+                doc.description = description;
+                doc.streetname = streetname;
+                doc.wards = wards;
+                doc.district = district;
+                doc.cost = cost;
+                doc.water = water;
+                doc.electric = electric;
+                doc.area = area;
+                doc.ultilities = ultilities;
+                doc.roomtype = roomtype;
+                if (uploadImage) {
+                    doc.uploadImage = uploadImage;
+                }
+                doc.save();
+            });
+
+            res.redirect('/viewpost');
+          }
+      });   
+      }
+      catch (e) {
+          console.log(e);
+          res.status(500).send(e);
+      }
+  }
 }
 
 module.exports = ManageController;

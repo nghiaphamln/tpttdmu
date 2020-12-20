@@ -10,9 +10,17 @@ var PostCtrl = require('../controllers/post.controller');
 /* GET home page. */
 router
     .get(
-        '/profile',
+        '/paypal',
+        isLoggedIn,
         ManageCtrl.payPal
     )
+
+    .post(
+        '/paypal',
+        isLoggedIn,
+        ManageCtrl.payPal
+    )
+    
     .get(
         '/', 
         HomeCtrl.index
@@ -26,6 +34,11 @@ router
     .get(
         '/property-grid', 
         HomeCtrl.gid
+    )
+
+    .get(
+        '/agentgrid', 
+        HomeCtrl.agent
     )
 
     .get(
@@ -69,6 +82,13 @@ router
     )
 
     .get(
+        '/editpost/:id',
+        isLoggedIn,
+        ManageCtrl.viewPostID,
+        ManageCtrl.viewPost
+    )
+
+    .get(
         '/property-single/:id',
         PostCtrl.singlePost
     )
@@ -77,6 +97,12 @@ router
         '/updateprofile/:id',
         isLoggedIn,
         ManageCtrl.updateProfile
+    )
+
+    .post(
+        '/editpost/:id',
+        isLoggedIn,
+        ManageCtrl.updatePost
     )
 
     .post(
